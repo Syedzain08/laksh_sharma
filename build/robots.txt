@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://laksh-sharma.vercel.app/sitemap.xml

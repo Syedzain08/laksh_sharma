@@ -1,0 +1,654 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/animations.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<section
+  class="grain relative min-h-screen bg-[#0a0a0d] overflow-hidden flex items-center justify-center"
+  id="hero"
+>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+
+  <div
+    class="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden pointer-events-none select-none z-0"
+  >
+    <div class="marquee-track">
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+      <span
+        class="font-display text-[clamp(4rem,16vw,14rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_rgba(255,255,255,0.07)] pr-16"
+        >{{ hero.marquee_text }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span
+      >
+    </div>
+  </div>
+
+  <div
+    class="relative z-10 w-full h-screen"
+    style="animation: fadeUp 1s ease both 0.2s"
+  >
+    <img
+      src="{{ hero.image }}"
+      alt="{{ hero.heading }}"
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 object-contain pointer-events-none md:h-[90vh] h-[70vh]"
+      style="
+        max-width: 100%;
+        filter: drop-shadow(0 0 60px rgba(255, 45, 120, 0.3));
+      "
+    />
+
+    <div
+      class="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+      style="background: linear-gradient(to top, #0a0a0d 0%, transparent 100%)"
+    ></div>
+
+    <div
+      class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-center w-full px-4 md:bottom-[28%] bottom-[32%]"
+    >
+      <p
+        class="text-[clamp(0.6rem,1.5vw,0.78rem)] tracking-[0.35em] text-[#ffd600] uppercase font-bold [text-shadow:0_1px_8px_rgba(0,0,0,0.9)]"
+        style="animation: fadeUp 1s ease both 0.8s"
+      >
+        {{ hero.subtitle }}
+      </p>
+
+      <h1
+        class="font-display md:text-[clamp(3rem,8vw,7rem)] text-[clamp(2rem,10vw,4rem)] tracking-[0.08em] leading-none bg-linear-to-br from-white from-30% via-[#ff2d78] via-65% to-[#ffd600] bg-clip-text text-transparent filter-[drop-shadow(0_2px_20px_rgba(255,45,120,0.6))] uppercase"
+        style="animation: fadeUp 1s ease both 0.6s"
+      >
+        {{ hero.heading }}
+      </h1>
+    </div>
+  </div>
+
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
+    style="animation: fadeUp 1s ease both 1s"
+  >
+    <div
+      class="w-6.5 h-11 border-2 border-white rounded-full flex justify-center pt-1.75 [box-shadow:0_0_12px_rgba(255,45,120,0.6),0_0_4px_rgba(0,0,0,0.8)]"
+    >
+      <div
+        class="w-1 h-2.25 rounded-full bg-[#ff2d78]"
+        style="animation: scrollBounce 1.5s ease-in-out infinite"
+      ></div>
+    </div>
+
+    <span
+      class="font-primary text-[0.55rem] tracking-[0.22em] text-white uppercase [text-shadow:0_1px_6px_rgba(0,0,0,0.9)]"
+    >
+      Scroll
+    </span>
+  </div>
+</section>
+<section class="about-me relative py-16" id="about-me">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="lg:w-1/2">
+        <img
+          src="{{ about.image }}"
+          alt="{{ about.heading }}"
+          class="w-full aspect-4/3 rounded-lg shadow-lg object-cover"
+          style="animation: fadeUp 0.6s ease both 0.05s"
+        />
+      </div>
+
+      <div
+        class="lg:w-1/2 flex flex-col items-center lg:items-center text-center lg:text-left"
+      >
+        <h2
+          class="text-7xl font-bold mb-12 text-center font-display uppercase"
+          style="animation: fadeUp 0.6s ease both 0.05s"
+        >
+          {{ about.heading }}
+        </h2>
+        <p
+          class="text-lg mb-7 text-gray-300 max-w-lg lg:max-w-2xl text-justify"
+          style="animation: fadeUp 0.6s ease both 0.05s"
+        >
+          {{ about.bio }}
+        </p>
+
+        <div class="flex items-center gap-3 w-full max-w-2xl">
+          <div class="flex-1 h-px" style="background-color: #ff2d78"></div>
+          <span
+            class="text-sm font-semibold tracking-widest uppercase whitespace-nowrap"
+            style="color: #ff2d78; animation: fadeUp 0.6s ease both 0.05s"
+          >
+            {{ about.tagline }}
+          </span>
+          <div class="flex-1 h-px" style="background-color: #ff2d78"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="my-work" class="py-16 px-4 mx-auto">
+  <h2
+    class="text-7xl md:text-7xl font-bold mb-16 text-center font-display uppercase"
+    style="animation: fadeUp 0.6s ease both 0.05s"
+  >
+    {{ work_heading }}
+  </h2>
+
+  <div
+    class="workSwiper swiper max-w-4xl mx-auto px-6 md:px-4"
+    style="animation: fadeUp 0.6s ease both 0.1s"
+  >
+    <div class="swiper-wrapper">
+      {% for item in work %}
+      <div class="swiper-slide">
+        <div
+          class="relative rounded-xl overflow-hidden border border-white/10 aspect-video bg-black group hover:cursor-pointer"
+          data-video-id="{{ item.video_id }}"
+        >
+          <!-- Thumbnail -->
+          <img
+            src="{{ item.image or 'https://i.ytimg.com/vi_webp/' ~ item.video_id ~ '/maxresdefault.webp' }}"
+            alt="{{ item.title }}"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='https://i.ytimg.com/vi_webp/{{ item.video_id }}/hqdefault.webp';"
+          />
+          <!-- Overlay + Play Button -->
+          <div
+            class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-all"
+          >
+            <div
+              class="w-16 h-16 md:w-20 md:h-20 bg-[#ff2d78] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,45,120,0.6)]"
+            >
+              <svg
+                class="w-6 h-6 md:w-8 md:h-8 text-white ml-1"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <!-- Title bar -->
+          {% if item.title %}
+          <div
+            class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent py-4 px-4 pointer-events-none"
+          >
+            <p
+              class="text-base md:text-lg font-semibold text-center text-white font-display"
+            >
+              {{ item.title }}
+            </p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Controls -->
+    <div class="relative flex items-center justify-center mt-8 gap-2">
+      <div class="work-button-prev">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </div>
+      <div class="work-pagination"></div>
+      <div class="work-button-next">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="upcoming-shows" class="py-16 mx-auto">
+  <h2
+    class="text-7xl md:text-7xl font-bold mb-16 text-center font-display uppercase"
+    style="animation: fadeUp 0.6s ease both 0.05s"
+  >
+    {{ shows_heading }}
+  </h2>
+  {% if shows %}
+  <!-- Countdown Banner -->
+  <div
+    class="relative max-w-5xl mx-auto px-4 mb-4 overflow-hidden countdown-banner"
+    style="animation: fadeUp 0.6s ease both 0.05s"
+  >
+    <div
+      class="absolute inset-0 flex items-center overflow-hidden pointer-events-none select-none"
+    >
+      <span
+        class="font-display text-[clamp(4rem,14vw,10rem)] font-bold text-white/4 tracking-widest leading-none whitespace-nowrap pl-2"
+        >COUNTDOWN</span
+      >
+    </div>
+
+    <div
+      class="relative flex flex-col sm:flex-row items-center justify-between gap-6 bg-white/3 border border-white/10 rounded-xl px-8 py-7"
+    >
+      <div>
+        <p
+          class="text-xs tracking-[0.3em] text-[#ff2d78] uppercase font-bold mb-1"
+        >
+          Next Event In
+        </p>
+        <p
+          class="text-lg md:text-xl font-semibold text-white font-display tracking-wide countdown-venue-label"
+        >
+          Loading...
+        </p>
+      </div>
+
+      <div class="flex items-end gap-6 md:gap-10">
+        <div class="text-center">
+          <span
+            id="cd-days"
+            class="block font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white leading-none tabular-nums"
+            >00</span
+          >
+          <span
+            class="block text-[0.6rem] tracking-[0.25em] text-gray-500 uppercase mt-1"
+            >Days</span
+          >
+        </div>
+        <div class="text-center">
+          <span
+            id="cd-hours"
+            class="block font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white leading-none tabular-nums"
+            >00</span
+          >
+          <span
+            class="block text-[0.6rem] tracking-[0.25em] text-gray-500 uppercase mt-1"
+            >Hours</span
+          >
+        </div>
+        <div class="text-center">
+          <span
+            id="cd-minutes"
+            class="block font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white leading-none tabular-nums"
+            >00</span
+          >
+          <span
+            class="block text-[0.6rem] tracking-[0.25em] text-gray-500 uppercase mt-1"
+            >Minutes</span
+          >
+        </div>
+        <div class="text-center">
+          <span
+            id="cd-seconds"
+            class="block font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-[#ff2d78] leading-none tabular-nums"
+            >00</span
+          >
+          <span
+            class="block text-[0.6rem] tracking-[0.25em] text-gray-500 uppercase mt-1"
+            >Seconds</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4">
+    {% for show in shows %}
+    <div
+      class="show-row group flex items-center border-t border-b border-white/10 py-6 px-4 md:px-8 gap-4 transition-all duration-300 hover:bg-white/3 relative overflow-hidden cursor-pointer {% if show.sold_out %}pointer-events-none{% endif %}"
+      data-date="{{ show.date.strftime('%Y-%m-%d') }}"
+      data-time="{{ show.time if show.time else '00:00' }}"
+      style="animation: fadeUp 0.6s ease both 0.6s"
+    >
+      <div
+        class="absolute left-0 top-0 bottom-0 w-0.5 bg-[#ff2d78] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"
+      ></div>
+
+      <div
+        class="w-20 shrink-0 text-center {% if show.sold_out %}opacity-50{% endif %}"
+      >
+        <span
+          class="block text-2xl font-bold text-white font-display leading-none"
+          >{{ show.date.strftime('%d') }}</span
+        >
+        <span
+          class="block text-xs tracking-[0.2em] text-[#ffd600] uppercase font-bold mt-1"
+          >{{ show.date.strftime('%b') }}</span
+        >
+      </div>
+
+      <div class="w-px h-10 bg-white/15 shrink-0 hidden sm:block"></div>
+
+      <div class="flex-1 min-w-0 {% if show.sold_out %}opacity-50{% endif %}">
+        <p class="text-base md:text-lg font-semibold text-white truncate">
+          {{ show.name }}
+        </p>
+        <p class="text-sm text-gray-400 mt-0.5">{{ show.Location }}</p>
+      </div>
+
+      <div class="shrink-0 hidden md:flex">
+        {% if show.sold_out %}
+        <span
+          class="px-3 py-1 rounded-full text-xs tracking-[0.15em] uppercase font-semibold text-gray-400 border border-white/15"
+          >SOLD OUT</span
+        >
+        {% else %}
+        <span class="text-xs tracking-[0.15em] text-gray-500 uppercase"
+          >{{ show.type }}</span
+        >
+        {% endif %}
+      </div>
+
+      <div class="shrink-0">
+        <a
+          href="{{ show.ticket_link }}"
+          class="inline-flex items-center gap-2 text-[#ff2d78] {% if show.sold_out %}opacity-50 pointer-events-none{% endif %} text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all duration-200"
+        >
+          BUY TICKETS
+          <span class="material-symbols-outlined text-base leading-none"
+            >arrow_forward</span
+          >
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Script AFTER the rows -->
+  <script>
+    (function () {
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      const now = new Date();
+      let target = null;
+      let nextVenue = null;
+
+      document.querySelectorAll(".show-row").forEach(function (row) {
+        const dt = new Date(
+          row.dataset.date + " " + (row.dataset.time || "00:00"),
+        );
+        if (dt < now) {
+          row.style.opacity = "0.35";
+          row.style.filter = "grayscale(60%)";
+          row.style.pointerEvents = "none";
+        } else {
+          if (!target || dt < target) {
+            target = dt;
+            const locEl = row.querySelector("p.text-gray-400");
+            nextVenue = locEl ? locEl.textContent.trim() : "";
+          }
+        }
+      });
+
+      if (nextVenue) {
+        const venueEl = document.querySelector(".countdown-venue-label");
+        if (venueEl) venueEl.textContent = nextVenue;
+      }
+
+      if (!target) {
+        const banner = document.querySelector(".countdown-banner");
+        if (banner) banner.style.display = "none";
+        return;
+      }
+
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          ["days", "hours", "minutes", "seconds"].forEach(function (id) {
+            document.getElementById("cd-" + id).textContent = "00";
+          });
+          return;
+        }
+        document.getElementById("cd-days").textContent = pad(
+          Math.floor(diff / 86400000),
+        );
+        document.getElementById("cd-hours").textContent = pad(
+          Math.floor((diff % 86400000) / 3600000),
+        );
+        document.getElementById("cd-minutes").textContent = pad(
+          Math.floor((diff % 3600000) / 60000),
+        );
+        document.getElementById("cd-seconds").textContent = pad(
+          Math.floor((diff % 60000) / 1000),
+        );
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+
+  {% else %}
+  <p
+    class="text-center text-gray-500 italic"
+    style="animation: fadeUp 0.6s ease both 0.25s"
+  >
+    No upcoming shows at the moment. Please check back later!
+  </p>
+  {% endif %}
+</section>
+
+<section id="testimonials" class="py-12 px-12 mx-auto">
+  <h2
+    class="text-7xl md:text-7xl font-bold mb-12 text-center font-display uppercase"
+    style="animation: fadeUp 0.6s ease both 0.05s"
+  >
+    {{ testimonials_heading }}
+  </h2>
+
+  <div class="testimonialsSwiper swiper max-w-2xl mx-auto px-6 md:px-4">
+    <!-- Swiper -->
+    <div class="swiper-wrapper">
+      {% for testimonial in testimonials %}
+      <div class="swiper-slide">
+        <div
+          class="flex flex-col text-lg md:text-2xl text-gray-300 gap-6"
+          style="animation: fadeUp 0.6s ease both 0.05s"
+        >
+          <p>{{ testimonial.testimonial }}</p>
+
+          <div class="flex items-center gap-3 md:gap-4 flex-wrap">
+            <div
+              class="w-10 md:w-16 h-px shrink-0"
+              style="background-color: #ff2d78"
+            ></div>
+            <span
+              class="text-sm md:text-lg font-semibold"
+              style="color: #ff2d78"
+            >
+              {{ testimonial.name }}, {{ testimonial.position }}
+            </span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Controls -->
+    <div
+      class="relative flex items-center justify-center mt-8 gap-2"
+      style="animation: fadeUp 0.6s ease both 0.05s"
+    >
+      <div class="swiper-button-prev">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="relative py-28 bg-[#0a0a0d] overflow-hidden">
+  <div
+    class="absolute -top-40 -left-40 w-96 h-96 bg-[#ff2d78]/20 blur-[120px] rounded-full pointer-events-none"
+  ></div>
+  <div
+    class="absolute -bottom-40 -right-40 w-96 h-96 bg-[#ffd600]/10 blur-[140px] rounded-full pointer-events-none"
+  ></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6">
+    <!-- Heading -->
+    <h2
+      class="text-6xl md:text-7xl font-bold text-center font-display mb-6 uppercase"
+      style="animation: fadeUp 0.6s ease both 0.25s"
+    >
+      {{ contact.heading }}
+    </h2>
+
+    <p
+      class="text-center text-gray-400 text-sm tracking-[0.25em] uppercase mb-20"
+      style="animation: fadeUp 0.6s ease both 0.25s"
+    >
+      {{ contact.subheading }}
+    </p>
+
+    <!-- Contact Cards -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-8"
+      style="animation: fadeUp 0.6s ease both 0.25s"
+    >
+      <!-- Email Card -->
+      <a
+        href="{{ contact.email.link }}"
+        class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
+      >
+        <span class="material-symbols-outlined text-[#ff2d78] text-3xl mb-6">
+          mail
+        </span>
+
+        <p
+          class="text-xs tracking-[0.3em] text-[#ffd600] uppercase font-bold mb-2"
+        >
+          Email
+        </p>
+
+        <p
+          class="text-white font-semibold text-lg group-hover:text-[#ff2d78] transition-colors"
+        >
+          {{ contact.email.display }}
+        </p>
+      </a>
+
+      <!-- Phone Card -->
+      <a
+        href="{{ contact.phone.link }}"
+        class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
+      >
+        <span class="material-symbols-outlined text-[#ff2d78] text-3xl mb-6">
+          call
+        </span>
+
+        <p
+          class="text-xs tracking-[0.3em] text-[#ffd600] uppercase font-bold mb-2"
+        >
+          Phone
+        </p>
+
+        <p
+          class="text-white font-semibold text-lg group-hover:text-[#ff2d78] transition-colors"
+        >
+          {{ contact.phone.display }}
+        </p>
+      </a>
+
+      <!-- Address Card -->
+      <a
+        href="{{ contact.address.link }}"
+        target="_blank"
+        class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
+      >
+        <span class="material-symbols-outlined text-[#ff2d78] text-3xl mb-6">
+          location_on
+        </span>
+
+        <p
+          class="text-xs tracking-[0.3em] text-[#ffd600] uppercase font-bold mb-2"
+        >
+          Address
+        </p>
+
+        <p
+          class="text-white font-semibold text-lg group-hover:text-[#ff2d78] transition-colors leading-snug"
+        >
+          {{ contact.address.display | replace('\n', '<br />') | safe }}
+        </p>
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div
+      class="flex items-center justify-center gap-3 mt-16"
+      style="animation: fadeUp 0.6s ease both 0.25s"
+    >
+      <div class="flex-1 h-px bg-white/10 max-w-24"></div>
+      <div class="flex items-center gap-6">
+        <!-- Instagram -->
+
+        <a
+          href="{{ contact.socials.instagram }}"
+          class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
+          aria-label="Instagram"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+            />
+          </svg>
+          <span class="text-[0.55rem] tracking-[0.2em] uppercase"
+            >Instagram</span
+          >
+        </a>
+
+        <!-- YouTube -->
+
+        <a
+          href="{{ contact.socials.youtube }}"
+          class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
+          aria-label="YouTube"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"
+            />
+          </svg>
+          <span class="text-[0.55rem] tracking-[0.2em] uppercase">YouTube</span>
+        </a>
+
+        <!-- TikTok -->
+
+        <a
+          href="{{ contact.socials.tiktok }}"
+          class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
+          aria-label="TikTok"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.25 8.25 0 0 0 4.83 1.56V6.79a4.85 4.85 0 0 1-1.06-.1z"
+            />
+          </svg>
+          <span class="text-[0.55rem] tracking-[0.2em] uppercase">TikTok</span>
+        </a>
+      </div>
+      <div class="flex-1 h-px bg-white/10 max-w-24"></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

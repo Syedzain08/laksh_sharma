@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ seo.site_description }}" />
+    <meta name="keywords" content="{{ seo.site_keywords }}" />
+    <meta name="theme-color" content="{{ seo.theme_color }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..900;1,200..900&amp;family=Bungee&amp;family=Bebas+Neue&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="canonical" href="{{ request.url }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ seo.logo }}" />
+    <style>
+      .testimonialsSwiper .swiper-button-prev,
+      .testimonialsSwiper .swiper-button-next {
+        position: static;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 45, 120, 0.1);
+        border: 1px solid rgba(255, 45, 120, 0.3);
+        border-radius: 50%;
+        transition: background 0.2s;
+      }
+
+      .testimonialsSwiper .swiper-button-prev:hover,
+      .testimonialsSwiper .swiper-button-next:hover {
+        background: rgba(255, 45, 120, 0.25);
+      }
+
+      .testimonialsSwiper .swiper-button-next::after,
+      .testimonialsSwiper .swiper-button-prev::after {
+        display: none;
+      }
+
+      .testimonialsSwiper .swiper-button-prev .material-symbols-outlined,
+      .testimonialsSwiper .swiper-button-next .material-symbols-outlined {
+        font-size: 22px;
+        color: #ff2d78;
+      }
+
+      .testimonialsSwiper .swiper-pagination {
+        position: static;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+        background: #ff2d78;
+        opacity: 0.3;
+        border-radius: 9999px;
+        transition:
+          width 0.3s ease,
+          opacity 0.3s ease;
+        margin: 0 !important;
+      }
+
+      .swiper-pagination-bullet-active {
+        width: 24px;
+        opacity: 1;
+      }
+
+      .workSwiper .work-button-prev,
+      .workSwiper .work-button-next {
+        position: static;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 45, 120, 0.1);
+        border: 1px solid rgba(255, 45, 120, 0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .workSwiper .work-button-prev:hover,
+      .workSwiper .work-button-next:hover {
+        background: rgba(255, 45, 120, 0.25);
+      }
+
+      .workSwiper .work-button-prev .material-symbols-outlined,
+      .workSwiper .work-button-next .material-symbols-outlined {
+        font-size: 22px;
+        color: #ff2d78;
+      }
+
+      .workSwiper .work-pagination {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+    </style>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="{{ seo.og.type }}" />
+    <meta property="og:title" content="{{ seo.og.title }}" />
+    <meta property="og:description" content="{{ seo.og.description }}" />
+    <meta property="og:url" content="{{ request.url }}" />
+    <meta property="og:image" content="{{ seo.site_url }}{{ seo.og.image }}" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="{{ seo.twitter.card }}" />
+    <meta name="twitter:title" content="{{ seo.twitter.title }}" />
+    <meta name="twitter:description" content="{{ seo.twitter.description }}" />
+    <meta name="twitter:image" content="{{ seo.site_url }}{{ seo.og.image }}" />
+    {% if seo.twitter.handle %}
+    <meta name="twitter:site" content="{{ seo.twitter.handle }}" />
+    {% endif %}
+
+    <!-- Person Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "{{ seo.site_name }}",
+        "url": "{{ seo.site_url }}",
+        "image": "{{ seo.site_url }}{{ hero.image }}",
+        "jobTitle": "{{ seo.schema.job_title }}",
+        "description": "{{ seo.site_description }}",
+        "telephone": "{{ contact.phone.display }}",
+        "email": "{{ contact.email.display }}",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ seo.schema.location.locality }}",
+          "addressRegion": "{{ seo.schema.location.region }}",
+          "addressCountry": "{{ seo.schema.location.country }}"
+        },
+        "sameAs": [
+          "{{ contact.socials.instagram }}",
+          "{{ contact.socials.youtube }}",
+          "{{ contact.socials.spotify }}",
+          "{{ contact.socials.tiktok }}"
+        ]
+      }
+    </script>
+
+    {% block head %}{% endblock %}
+
+    <title>{% block title %}{% endblock %} - {{ seo.site_name }}</title>
+  </head>
+  <body
+    class="font-primary bg-[#101014] text-white min-h-screen overflow-x-hidden"
+  >
+    {% block content %}{% endblock %} {% include "partials/footer.html" %}
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Testimonials Swiper
+      const testimonialSwiper = new Swiper(".testimonialsSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+      const workSwiper = new Swiper(".workSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: false,
+        pagination: {
+          el: ".work-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".work-button-next",
+          prevEl: ".work-button-prev",
+        },
+      });
+    });
+    document.querySelectorAll(".workSwiper .swiper-slide").forEach((slide) => {
+      slide.addEventListener("click", function () {
+        const container = this.querySelector("[data-video-id]");
+        if (!container) return;
+
+        if (container.querySelector("iframe")) return;
+
+        const videoId = container.dataset.videoId;
+        const iframe = document.createElement("iframe");
+        iframe.className = "absolute inset-0 w-full h-full";
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.frameBorder = "0";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.setAttribute("allowfullscreen", "");
+
+        container.innerHTML = "";
+        container.appendChild(iframe);
+      });
+    });
+  </script>
+
+  {% block scripts %}{% endblock %}
+</html>

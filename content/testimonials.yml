@@ -1,0 +1,11 @@
+heading: TESTIMONIALS
+testimonials:
+  - name: John Doe
+    position: CEO of Company
+    testimonial: This product has revolutionized our workflow and increased our productivity by 50%!
+  - name: Jane Smith
+    position: Marketing Manager
+    testimonial: The customer support is outstanding. They helped us set up everything in no time!
+  - name: Emily Johnson
+    position: Software Engineer
+    testimonial: The user interface is intuitive and easy to navigate. I highly recommend it!

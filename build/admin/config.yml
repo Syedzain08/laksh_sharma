@@ -1,0 +1,173 @@
+backend:
+  name: github
+  repo: Syedzain08/laksh_sharma
+  branch: master
+  base_url: https://laksh-sharma.vercel.app
+  auth_endpoint: api/auth
+  proxied: false
+
+media_folder: "static/img"
+public_folder: "/static/img"
+
+collections:
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+
+  
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.yml"
+        fields:
+          - { label: "Subtitle / Tag", name: "subtitle", widget: "string", hint: "Displayed above the name e.g. 'Artist'" }
+          - { label: "Heading (Name)", name: "heading", widget: "string" }
+          - label: "Hero Image"
+            name: "image"
+            widget: "image"
+            hint: "The main cutout photo shown in the hero"
+          - label: "Marquee Text"
+            name: "marquee_text"
+            widget: "string"
+            hint: "Repeated text in the background e.g. 'LAKSH SHARMA'"
+
+
+      - name: "about"
+        label: "About Section"
+        file: "content/about.yml"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "ABOUT ME" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Tagline / Badge", name: "tagline", widget: "string", hint: "e.g. '5 years of live band experience'" }
+          - label: "About Image"
+            name: "image"
+            widget: "image"
+
+    
+      - name: "work"
+        label: "My Work Section"
+        file: "content/work.yml"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "MY WORK" }
+          - label: "Videos"
+            name: "videos"
+            widget: "list"
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Label (internal)", name: "label", widget: "string", hint: "Just for your reference e.g. 'Live at Brooklyn Steel'" }
+              - label: "YouTube Video ID"
+                name: "video_id"
+                widget: "string"
+                hint: "The code after 'v=' in the URL (e.g., for youtube.com/watch?v=dQw4w9WgXcQ, use: dQw4w9WgXcQ)"
+
+      - name: "shows"
+        label: "Upcoming Shows Section"
+        file: "content/shows.yml"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "UPCOMING SHOWS" }
+          - label: "Shows"
+            name: "shows"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.date}}"
+            fields:
+              - { label: "Show Name", name: "name", widget: "string" }
+              - { label: "Date (YYYY-MM-DD)", name: "date", widget: "string", hint: "Format: 2026-03-14" }
+              - { label: "Location", name: "Location", widget: "string" }
+              - { label: "Type", name: "type", widget: "string", hint: "e.g. Live Performance, Concert" }
+              - { label: "Sold Out?", name: "sold_out", widget: "boolean", default: false }
+              - { label: "Ticket Link", name: "ticket_link", widget: "string" }
+              - { label: "Time", name: "time", widget: "string", hint: "e.g. 7:00 PM" }
+
+
+      - name: "testimonials"
+        label: "Testimonials Section"
+        file: "content/testimonials.yml"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "TESTIMONIALS" }
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Position / Title", name: "position", widget: "string" }
+              - { label: "Testimonial", name: "testimonial", widget: "text" }
+
+
+      - name: "contact"
+        label: "Contact Section"
+        file: "content/contact.yml"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string", default: "GET IN TOUCH" }
+          - { label: "Subheading", name: "subheading", widget: "string", default: "Bookings • Press • Collaborations" }
+          - label: "Email"
+            name: "email"
+            widget: "object"
+            fields:
+              - { label: "Display Text", name: "display", widget: "string" }
+              - { label: "Link (mailto:...)", name: "link", widget: "string" }
+          - label: "Phone"
+            name: "phone"
+            widget: "object"
+            fields:
+              - { label: "Display Text", name: "display", widget: "string" }
+              - { label: "Link (tel:...)", name: "link", widget: "string" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Display Text (HTML allowed, use \\n for line break)", name: "display", widget: "text" }
+              - { label: "Maps Link", name: "link", widget: "string" }
+          - label: "Social Links"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Instagram URL", name: "instagram", widget: "string" }
+              - { label: "YouTube URL", name: "youtube", widget: "string" }
+              - { label: "TikTok URL", name: "tiktok", widget: "string" }
+
+
+      - name: "seo"
+        label: "SEO & Meta"
+        file: "content/seo.yml"
+        fields:
+          - { label: "Site Name", name: "site_name", widget: "string" }
+          - { label: "Site Description", name: "site_description", widget: "text" }
+          - { label: "Site Keywords", name: "site_keywords", widget: "string", hint: "Comma-separated e.g. 'musician, artist, live shows'" }
+          - { label: "Site URL", name: "site_url", widget: "string", hint: "e.g. https://lakshsharma.com (no trailing slash)" }
+          - { label: "Theme Color", name: "theme_color", widget: "string", default: "#ff2d78" }
+          - label: "Logo / Favicon"
+            name: "logo"
+            widget: "image"
+          - label: "Open Graph"
+            name: "og"
+            widget: "object"
+            fields:
+              - { label: "OG Type", name: "type", widget: "string", default: "website" }
+              - { label: "OG Title", name: "title", widget: "string" }
+              - { label: "OG Description", name: "description", widget: "text" }
+              - label: "OG Image"
+                name: "image"
+                widget: "image"
+                hint: "Recommended: 1200x630px"
+          - label: "Twitter Card"
+            name: "twitter"
+            widget: "object"
+            fields:
+              - { label: "Card Type", name: "card", widget: "select", options: ["summary", "summary_large_image"], default: "summary_large_image" }
+              - { label: "Twitter Title", name: "title", widget: "string" }
+              - { label: "Twitter Description", name: "description", widget: "text" }
+              - { label: "Twitter Handle", name: "handle", widget: "string", hint: "e.g. @lakshsharma (optional)", required: false }
+          - label: "Schema (Structured Data)"
+            name: "schema"
+            widget: "object"
+            fields:
+              - { label: "Job Title", name: "job_title", widget: "string", hint: "e.g. Musician, Artist, Performer" }
+              - { label: "Area Served", name: "area_served", widget: "string", hint: "e.g. Worldwide" }
+              - label: "Location"
+                name: "location"
+                widget: "object"
+                fields:
+                  - { label: "City", name: "locality", widget: "string" }
+                  - { label: "State / Region", name: "region", widget: "string" }
+                  - { label: "Country Code", name: "country", widget: "string", hint: "e.g. PK, US, GB" }

@@ -1,0 +1,23 @@
+site_name: "Laksh Sharma"
+site_description: "Laksh Sharma — Artist, musician, and live performer based in Lahore."
+site_keywords: "Laksh Sharma, musician, artist, live shows, concerts, Lahore"
+site_url: "https://lakshsharma.com"
+theme_color: "#ff2d78"
+logo: "/static/img/logo.svg"
+og:
+  type: "website"
+  title: "Laksh Sharma — Artist"
+  description: "Laksh Sharma — Artist, musician, and live performer."
+  image: "/static/img/laksh-mic.png"
+twitter:
+  card: "summary_large_image"
+  title: "Laksh Sharma — Artist"
+  description: "Laksh Sharma — Artist, musician, and live performer."
+  handle: ""
+schema:
+  job_title: "Artist"
+  area_served: "Worldwide"
+  location:
+    locality: "Halifax"
+    region: "West Yorkshire"
+    country: "GB"
