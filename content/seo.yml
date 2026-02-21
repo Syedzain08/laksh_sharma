@@ -1,6 +1,6 @@
 site_name: Laksh Sharma
-site_description: Laksh Sharma — Artist, musician, and live performer based in Halifax.
-site_keywords: Laksh Sharma, musician, artist, live shows, concerts, Halifax, UK
+site_description: Laksh Sharma — Artist, musician, and live performer based in London.
+site_keywords: Laksh Sharma, musician, artist, live shows, concerts, London, UK
 site_url: https://laksh-sharma.vercel.app
 theme_color: "#ff2d78"
 logo: /static/img/logo.svg
@@ -18,6 +18,6 @@ schema:
   job_title: Artist
   area_served: Worldwide
   location:
-    locality: Halifax
-    region: West Yorkshire
+    locality: London
+    region: Greater London
     country: GB
