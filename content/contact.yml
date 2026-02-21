@@ -1,15 +1,17 @@
 heading: GET IN TOUCH
-subheading: "Bookings • Press • Collaborations"
+subheading: Bookings • Press • Collaborations
 email:
   display: contact@lakshsharma.com
   link: mailto:contact@lakshsharma.com
 phone:
-  display: "+1 (123) 456-7890"
-  link: "tel:+11234567890"
+  display: +44 7774 839627
+  link: tel:+44 7774 839627
 address:
-  display: "123 Music Avenue\nNew York, NY 10001"
+  display: |-
+    London \n
+    United Kingdom
   link: https://maps.google.com
 socials:
-  instagram: "#"
+  instagram: https://www.instagram.com/lakshh_sings
   youtube: "#"
-  tiktok: "#"
+  tiktok: https://www.tiktok.com/@laksh_sings
