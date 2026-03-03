@@ -89,8 +89,7 @@ collections:
             widget: "list"
             summary: "{{fields.name}}"
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Position / Title", name: "position", widget: "string" }
+              - { label: "Name/Event", name: "name", widget: "string" }
               - { label: "Testimonial", name: "testimonial", widget: "text" }
 
 
