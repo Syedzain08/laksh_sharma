@@ -8,3 +8,11 @@ shows:
     type: Live Performance
     sold_out: false
     ticket_link: https://example.com/tickets/jazz-club
+  - offset: -4
+    sold_out: false
+    name: Deep Blues
+    date_str: 14-03-2026
+    time_str: 12:00
+    location: NYC, New York, United States
+    type: Concert
+    ticket_link: https://example.com/tickets/deep-blues
