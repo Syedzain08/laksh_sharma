@@ -70,13 +70,23 @@ collections:
             widget: "list"
             summary: "{{fields.name}} — {{fields.date}}"
             fields:
-              - { label: "Show Name", name: "name", widget: "string" }
-              - { label: "Date (YYYY-MM-DD)", name: "date", widget: "string", hint: "Format: 2026-03-14" }
-              - { label: "Location", name: "Location", widget: "string" }
+              - { label: "Show Name", name: "name", widget: "string" }  
+              - label: "Show Date (DD-MM-YYYY)"
+                name: "date_str"
+                widget: "string"
+              - label: "Show Time (HH:MM)"
+                name: "time_str"
+                widget: "string"
+              - label: "Timezone Offset (e.g. +5 or -5)"
+                name: "offset"
+                widget: "number"
+                default: +0
+                value_type: "int"
+              - { label: "Location", name: "location", widget: "string" }
               - { label: "Type", name: "type", widget: "string", hint: "e.g. Live Performance, Concert" }
               - { label: "Sold Out?", name: "sold_out", widget: "boolean", default: false }
               - { label: "Ticket Link", name: "ticket_link", widget: "string" }
-              - { label: "Time", name: "time", widget: "string", hint: "e.g. 7:00 PM" }
+            
 
 
       - name: "testimonials"

@@ -4,6 +4,7 @@ from os import path, getenv
 from dotenv import load_dotenv
 from flask_frozen import Freezer
 from shutil import copy
+from datetime import datetime
 
 app = Flask(__name__)
 freezer = Freezer(app)
@@ -40,13 +41,37 @@ def index():
     testi_data = load_data("testimonials.yml")
     contact = load_data("contact.yml")
 
+    shows = shows_data.get("shows", [])
+
+    for show in shows:
+        try:
+
+            date_obj = datetime.strptime(
+                f"{show['date_str']} {show['time_str']}", "%d-%m-%Y %H:%M"
+            )
+            show["date_obj"] = date_obj
+
+            offset_val = int(show.get("offset", 0))
+            prefix = "+" if offset_val >= 0 else "-"
+            formatted_offset = f"{prefix}{abs(offset_val):02d}:00"
+
+            show["js_iso_date"] = (
+                f"{date_obj.strftime('%Y-%m-%dT%H:%M:%S')}{formatted_offset}"
+            )
+        except Exception as e:
+            print(f"Error parsing show {show.get('name')}: {e}")
+            show["date_obj"] = None
+            show["js_iso_date"] = ""
+
+    shows.sort(key=lambda x: x["date_obj"] if x["date_obj"] else datetime.max)
+
     return render_template(
         "index.html",
         hero=hero,
         about=about,
         work=work_data.get("videos", []),
         work_heading=work_data.get("heading", "MY WORK"),
-        shows=shows_data.get("shows", []),
+        shows=shows,
         shows_heading=shows_data.get("heading", "UPCOMING SHOWS"),
         countdown_target=shows_data.get("countdown_target", ""),
         countdown_venue=shows_data.get("countdown_venue", ""),

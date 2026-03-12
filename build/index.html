@@ -543,9 +543,8 @@
   <div class="max-w-5xl mx-auto px-4">
     
     <div
-      class="show-row group flex items-center border-t border-b border-white/10 py-6 px-4 md:px-8 gap-4 transition-all duration-300 hover:bg-white/3 relative overflow-hidden cursor-pointer pointer-events-none"
-      data-date="2026-03-13"
-      data-time="8:00 PM"
+      class="show-row group flex items-center border-t border-b border-white/10 py-6 px-4 md:px-8 gap-4 transition-all duration-300 hover:bg-white/3 relative overflow-hidden cursor-pointer "
+      data-date="2026-03-14T20:00:00+00:00"
       style="animation: fadeUp 0.6s ease both 0.6s"
     >
       <div
@@ -553,11 +552,11 @@
       ></div>
 
       <div
-        class="w-20 shrink-0 text-center opacity-50"
+        class="w-20 shrink-0 text-center "
       >
         <span
           class="block text-2xl font-bold text-white font-display leading-none"
-          >13</span
+          >14</span
         >
         <span
           class="block text-xs tracking-[0.2em] text-[#ffd600] uppercase font-bold mt-1"
@@ -567,28 +566,29 @@
 
       <div class="w-px h-10 bg-white/15 shrink-0 hidden sm:block"></div>
 
-      <div class="flex-1 min-w-0 opacity-50">
+      <div class="flex-1 min-w-0 ">
         <p class="text-base md:text-lg font-semibold text-white truncate">
-          Test
+          Live at The Jazz Club
         </p>
-        <p class="text-sm text-gray-400 mt-0.5">Lahore</p>
+        <p class="text-sm text-gray-400 mt-0.5">
+          New York, NY • 08:00 PM
+        </p>
       </div>
 
       <div class="shrink-0 hidden md:flex">
         
-        <span
-          class="px-3 py-1 rounded-full text-xs tracking-[0.15em] uppercase font-semibold text-gray-400 border border-white/15"
-          >SOLD OUT</span
+        <span class="text-xs tracking-[0.15em] text-gray-500 uppercase"
+          >Live Performance</span
         >
         
       </div>
 
       <div class="shrink-0">
         <a
-          href="https://test.com"
-          data-umami-event="show-Test-ticket-click"
-          data-umami-event-cta="Test-ticket-click"
-          class="inline-flex items-center gap-2 text-[#ff2d78] opacity-50 pointer-events-none text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all duration-200"
+          href="https://example.com/tickets/jazz-club"
+          data-umami-event="show-Live-at-The-Jazz-Club-ticket-click"
+          data-umami-event-cta="Live-at-The-Jazz-Club-ticket-click"
+          class="inline-flex items-center gap-2 text-[#ff2d78]  text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all duration-200"
         >
           BUY TICKETS
           <span class="material-symbols-outlined text-base leading-none"
@@ -600,7 +600,6 @@
     
   </div>
 
-  <!-- Script AFTER the rows -->
   <script>
     (function () {
       function pad(n) {
@@ -612,9 +611,8 @@
       let nextVenue = null;
 
       document.querySelectorAll(".show-row").forEach(function (row) {
-        const dt = new Date(
-          row.dataset.date + " " + (row.dataset.time || "00:00"),
-        );
+        const dt = new Date(row.dataset.date);
+
         if (dt < now) {
           row.style.opacity = "0.35";
           row.style.filter = "grayscale(60%)";
@@ -622,6 +620,7 @@
         } else {
           if (!target || dt < target) {
             target = dt;
+
             const locEl = row.querySelector("p.text-gray-400");
             nextVenue = locEl ? locEl.textContent.trim() : "";
           }
@@ -641,24 +640,29 @@
 
       function tick() {
         const diff = target - Date.now();
+
         if (diff <= 0) {
           ["days", "hours", "minutes", "seconds"].forEach(function (id) {
-            document.getElementById("cd-" + id).textContent = "00";
+            const el = document.getElementById("cd-" + id);
+            if (el) el.textContent = "00";
           });
           return;
         }
-        document.getElementById("cd-days").textContent = pad(
-          Math.floor(diff / 86400000),
-        );
-        document.getElementById("cd-hours").textContent = pad(
-          Math.floor((diff % 86400000) / 3600000),
-        );
-        document.getElementById("cd-minutes").textContent = pad(
-          Math.floor((diff % 3600000) / 60000),
-        );
-        document.getElementById("cd-seconds").textContent = pad(
-          Math.floor((diff % 60000) / 1000),
-        );
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+
+        const daysEl = document.getElementById("cd-days");
+        const hoursEl = document.getElementById("cd-hours");
+        const minsEl = document.getElementById("cd-minutes");
+        const secsEl = document.getElementById("cd-seconds");
+
+        if (daysEl) daysEl.textContent = pad(days);
+        if (hoursEl) hoursEl.textContent = pad(hours);
+        if (minsEl) minsEl.textContent = pad(minutes);
+        if (secsEl) secsEl.textContent = pad(seconds);
       }
 
       tick();
