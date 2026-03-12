@@ -355,6 +355,8 @@
       <div class="shrink-0">
         <a
           href="{{ show.ticket_link }}"
+          data-umami-event="show-{{show.name | replace(' ', '-')}}-ticket-click"
+          data-umami-event-cta="{{ show.name | replace(' ', '-')}}-ticket-click"
           class="inline-flex items-center gap-2 text-[#ff2d78] {% if show.sold_out %}opacity-50 pointer-events-none{% endif %} text-sm font-bold tracking-widest uppercase group-hover:gap-3 transition-all duration-200"
         >
           BUY TICKETS
@@ -527,6 +529,8 @@
       <!-- Email Card -->
       <a
         href="{{ contact.email.link }}"
+        data-umami-event="contact-email-click"
+        data-umami-event-cta="contact-email-click"
         class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
       >
         <span class="material-symbols-outlined text-[#ff2d78] text-3xl mb-6">
@@ -549,6 +553,8 @@
       <!-- Phone Card -->
       <a
         href="{{ contact.phone.link }}"
+        data-umami-event="contact-phone-click"
+        data-umami-event-cta="contact-phone-click"
         class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
       >
         <span class="material-symbols-outlined text-[#ff2d78] text-3xl mb-6">
@@ -571,6 +577,8 @@
       <!-- Address Card -->
       <a
         href="{{ contact.address.link }}"
+        data-umami-event="contact-address-click"
+        data-umami-event-cta="contact-address-click"
         target="_blank"
         class="group relative bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:border-[#ff2d78] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,45,120,0.25)]"
       >
@@ -603,6 +611,8 @@
 
         <a
           href="{{ contact.socials.instagram }}"
+          data-umami-event="socials-instagram-click"
+          data-umami-event-cta="socials-instagram-click"
           class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
           aria-label="Instagram"
         >
@@ -620,6 +630,8 @@
 
         <a
           href="{{ contact.socials.youtube }}"
+          data-umami-event="socials-youtube-click"
+          data-umami-event-cta="socials-youtube-click"
           class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
           aria-label="YouTube"
         >
@@ -635,6 +647,8 @@
 
         <a
           href="{{ contact.socials.tiktok }}"
+          data-umami-event="socials-tiktok-click"
+          data-umami-event-cta="socials-tiktok-click"
           class="group text-gray-500 hover:text-[#ff2d78] transition-colors duration-200 flex flex-col items-center gap-1.5"
           aria-label="TikTok"
         >
