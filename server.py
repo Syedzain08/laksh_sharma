@@ -46,18 +46,24 @@ def index():
     for show in shows:
         try:
 
-            date_obj = datetime.strptime(
-                f"{show['date_str']} {show['time_str']}", "%d-%m-%Y %H:%M"
-            )
-            show["date_obj"] = date_obj
+            date_str = str(show["date_str"])
+            time_raw = show["time_str"]
+            if isinstance(time_raw, int):
+                hours, minutes = divmod(time_raw, 60)
+                time_str = f"{hours:02d}:{minutes:02d}"
+            else:
+                time_str = str(time_raw)
+
+            date_obj = datetime.strptime(f"{date_str} {time_str}", "%d-%m-%Y %H:%M")
 
             offset_val = int(show.get("offset", 0))
-            prefix = "+" if offset_val >= 0 else "-"
-            formatted_offset = f"{prefix}{abs(offset_val):02d}:00"
+            sign = "+" if offset_val >= 0 else "-"
+            formatted_offset = f"{sign}{abs(offset_val):02d}:00"
 
             show["js_iso_date"] = (
                 f"{date_obj.strftime('%Y-%m-%dT%H:%M:%S')}{formatted_offset}"
             )
+            show["date_obj"] = date_obj
         except Exception as e:
             print(f"Error parsing show {show.get('name')}: {e}")
             show["date_obj"] = None

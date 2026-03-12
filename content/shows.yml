@@ -8,11 +8,3 @@ shows:
     type: Live Performance
     sold_out: false
     ticket_link: https://example.com/tickets/jazz-club
-  - offset: -4
-    sold_out: false
-    name: Deep Blues
-    ticket_link: https://example.com/tickets/deep-blues
-    type: Concert
-    location: New York
-    time_str: 20:00
-    date_str: 14:03:2026
