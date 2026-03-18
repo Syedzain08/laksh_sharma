@@ -27,8 +27,16 @@ def inject_settings():
     with open("content/seo.yml", "r") as f:
         seo = safe_load(f)
 
+    with open("content/contact.yml", "r") as f:
+        contact = safe_load(f)
+
+    with open("content/hero.yml", "r") as f:
+        hero = safe_load(f)
+
     return {
         "seo": seo,
+        "contact": contact,
+        "hero": hero,
     }
 
 
@@ -91,6 +99,11 @@ def index():
 @app.route("/admin/<path:path>")
 def admin(path="index.html"):
     return send_from_directory("static/admin", path)
+
+
+@app.route("/privacy-policy/")
+def privacy_policy():
+    return render_template("privacy_policy.html")
 
 
 # -- Robots Route -- #

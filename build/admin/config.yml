@@ -2,9 +2,12 @@ backend:
   name: github
   repo: Syedzain08/laksh_sharma
   branch: master
-  base_url: https://laksh-sharma.vercel.app
+  base_url: https://www.lakshsharma.co.uk
   auth_endpoint: api/auth
   proxied: false
+
+site_url: https://www.lakshsharma.co.uk
+display_url: https://www.lakshsharma.co.uk
 
 media_folder: "static/img"
 public_folder: "/static/img"
