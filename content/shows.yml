@@ -1,18 +1,2 @@
 heading: UPCOMING SHOWS
-shows:
-  - name: Live at The Jazz Club
-    date_str: 24-03-2026
-    time_str: 20:00
-    offset: 0
-    location: London
-    type: Live Performance
-    sold_out: false
-    ticket_link: https://example.com/tickets/jazz-club
-  - offset: -4
-    sold_out: false
-    name: Deep Blues
-    date_str: 14-03-2026
-    time_str: 12:00
-    location: NYC, New York, United States
-    type: Concert
-    ticket_link: https://example.com/tickets/deep-blues
+shows: []
